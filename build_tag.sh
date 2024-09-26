@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker_tag=${3:-2}
+docker_tag=${3:-$2}
 url=https://github.com/MrDave/StaticJinjaPlus/archive/refs/tags/$2.tar.gz
 hash=$(curl -sL $url | sha256sum | awk '{ print $1 }')
 
