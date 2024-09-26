@@ -1,0 +1,16 @@
+FROM python:3.10-slim
+
+WORKDIR /opt
+
+ARG TAG
+ARG HASH
+ARG URL
+
+ADD https://github.com/MrDave/StaticJinjaPlus.git app
+
+RUN cd app && \
+    python3.10 -m venv venv && \
+    ./venv/bin/pip install -r requirements.txt
+
+WORKDIR /opt/app
+CMD ["venv/bin/python", "main.py", "--srcpath", "/opt/templates", "--outpath", "/opt/build"]
